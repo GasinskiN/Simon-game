@@ -21,6 +21,13 @@ function nextSequence() {
             console.log(randNumber);
             break;
     }
+    var lastColorInSequence = sequenceArray[sequenceArray.length - 1];
+    var sound = new Audio("sounds/" + lastColorInSequence + ".mp3");
+    sound.play(); 
+    document.querySelector("." + lastColorInSequence).classList.toggle("pressed");
+    setTimeout(()=>{
+        document.querySelector("." + lastColorInSequence).classList.toggle("pressed")}
+        , 150);
 }
 
 function sequnceChecker() {
@@ -36,24 +43,21 @@ function sequnceChecker() {
     if(numberInSequence > sequenceLength){
         numberInSequence = 0;
         sequenceLength++;
-        nextSequence();
+        setTimeout(nextSequence, 300);
     }
     
 }
-function gameFunction() {
-    $(this).hide("fast");
-    nextSequence();
-    var lastColorInSequence = sequenceArray[sequenceArray.length - 1];
-    var sound = new Audio("sounds/" + lastColorInSequence + ".mp3");
-    sound.play();
-    document.querySelector("." + lastColorInSequence).classList.toggle("pressed");
-    setTimeout(()=>{document.querySelector("." + lastColorInSequence).classList.toggle("pressed")}, 80);
-}
+
 function squareHighlight() {
     this.classList.toggle("pressed");
     setTimeout(()=>{this.classList.toggle("pressed")}, 80);
 }
+// Hides start game button and calls the next sequence 
+// after waiting for the button to hidefunction
+$(".start-game").on("click", function(){
+    $(this).hide("fast");
+    setTimeout(nextSequence, 190);
+});
 
-$(".start-game").on("click", gameFunction);
 $(".btn").on("click", squareHighlight);
 $(".btn").on("click", sequnceChecker);
