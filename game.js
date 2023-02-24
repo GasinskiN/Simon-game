@@ -2,6 +2,8 @@ var sequenceArray = [];
 var sequenceLength = 0;
 var numberInSequence = 0;
 
+// Adds a color to the array based on the random number than with a delay plays a sound 
+// to the user and highlights the button that has been added to the sequence
 function nextSequence() {
     var randNumber = Math.round(Math.random() * 3);
     switch (randNumber) {
@@ -30,6 +32,10 @@ function nextSequence() {
         , 150);
 }
 
+// function checks if the start game button is hidden if not returns nothing, than checks if 
+// the button clicked was the right button and plays a sound at the end it checks if the button 
+// we clicked was last in sequence if so it runs nextSequence and resets the numberInSequence 
+// postion and iterates sequenceLength
 function sequnceChecker() {
     if($(".start-game").css("display") !== "none"){
         return;
@@ -47,7 +53,7 @@ function sequnceChecker() {
     }
     
 }
-
+// Highlights a button when it is pressed
 function squareHighlight() {
     this.classList.toggle("pressed");
     setTimeout(()=>{this.classList.toggle("pressed")}, 80);
