@@ -23,7 +23,7 @@ body {
   height: 200px;
   width: 200px;
   border: 10px solid black;
-  border-radius: 20%;
+  border-radius: 10%;
 }
 
 .start-game{
@@ -36,11 +36,19 @@ body {
 }
 .disappear{
   visibility: hidden;
+  position: absolute;
 }
 
 .game-over {
   background-color: red;
-  opacity: 0.8;
+  opacity: 0.1;
+  position: relative;
+  z-index: 1;
+}
+.game-end-title{
+  margin-left: 20%;
+  position: absolute;
+  z-index: 10;
 }
 
 .red {
