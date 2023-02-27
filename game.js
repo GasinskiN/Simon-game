@@ -26,10 +26,7 @@ function nextSequence() {
     var lastColorInSequence = sequenceArray[sequenceArray.length - 1];
     var sound = new Audio("sounds/" + lastColorInSequence + ".mp3");
     sound.play(); 
-    document.querySelector("." + lastColorInSequence).classList.toggle("pressed");
-    setTimeout(()=>{
-        document.querySelector("." + lastColorInSequence).classList.toggle("pressed")}
-        , 150);
+    $("." + lastColorInSequence).fadeOut(100).fadeIn(100);
 }
 
 function toggleGameOver() {
@@ -68,8 +65,7 @@ function sequnceChecker() {
 }
 // Highlights a button when it is pressed
 function squareHighlight() {
-    this.classList.toggle("pressed");
-    setTimeout(()=>{this.classList.toggle("pressed")}, 80);
+    $(this).fadeOut(100).fadeIn(100);
 }
 // Hides start game button and calls the next sequence 
 // after waiting for the button to hide and toggles the game 
