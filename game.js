@@ -28,19 +28,20 @@ function nextSequence() {
     var sound = new Audio("sounds/" + lastColorInSequence + ".mp3");
     sound.play();
     $("." + lastColorInSequence).fadeOut(100).fadeIn(100);
+    $("#level-title").text("Level " + (sequenceLength + 1));
 }
 
 function toggleGameOver() {
     document.querySelector("body").classList.toggle("game-over");
-    document.querySelector(".game-end-title").classList.toggle("disappear");
+    $("#level-title").text("Game over press any button");
     hasGameStarted = false;
 }
 
-// function checks if the start game button is hidden if not returns nothing, than checks if 
-// the button clicked was the right button and plays a sound at the end it checks if the button 
-// we clicked was last in sequence if so it runs nextSequence and resets the numberInSequence 
+// function checks if the game has started, then checks if 
+// the button clicked was the right button and plays a sound accordingly. At the end it checks if the button 
+// we clicked was last in sequence if so it runs nextSequence, resets the numberInSequence 
 // postion and iterates sequenceLength
-function sequnceChecker() {
+function sequenceChecker() {
     if (hasGameStarted === false) {
         return;
     }
@@ -53,7 +54,6 @@ function sequnceChecker() {
         var sound = new Audio("sounds/wrong.mp3");
         sound.play();
         toggleGameOver();
-        $(".start-game").show("fast");
         sequenceLength = 0;
         sequenceArray = [];
         return;
@@ -86,4 +86,4 @@ $(document).on("keydown", function () {
 });
 
 $(".btn").on("click", squareHighlight);
-$(".btn").on("click", sequnceChecker);
+$(".btn").on("click", sequenceChecker);

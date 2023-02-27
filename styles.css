@@ -41,14 +41,7 @@ body {
 
 .game-over {
   background-color: red;
-  opacity: 0.1;
-  position: relative;
-  z-index: 1;
-}
-.game-end-title{
-  margin-left: 20%;
-  position: absolute;
-  z-index: 10;
+  opacity: 0.6;
 }
 
 .red {
